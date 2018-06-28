@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import java.util.ArrayList;
+import android.widget.AdapterView;
+import android.widget.ListView;
 
 
 
@@ -22,7 +24,7 @@ public class ArtistFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_artist, container, false);
+        View view = inflater.inflate(R.layout.list_item, container, false);
         ArrayList<Artist> artists = new ArrayList<>();
 
 
