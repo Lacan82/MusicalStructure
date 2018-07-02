@@ -3,17 +3,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ArtistFragment">
+    tools:context=".SongFragment">
 
-    <TextView
-        android:id="@+id/textView"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/songTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Artist loaded"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
+
+        <ListView
+            android:id="@+id/song_list"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            >
+
+        </ListView>
+
+
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Artist loaded" />
+        android:layout_gravity="center"
+        android:orientation="horizontal">
 
-    <ListView
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:id="@+id/artist_list" />
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/rewind_forward_arrows" />
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/play_button"/>
+
+        <ImageButton
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/fast_forward_arrows"/>
+    </LinearLayout>
+
+    </LinearLayout>
 
 </FrameLayout>

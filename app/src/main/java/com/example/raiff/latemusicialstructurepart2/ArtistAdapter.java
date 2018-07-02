@@ -24,7 +24,6 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
 
         Artist currentArtist = getItem(position);
 
-
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.default_imageView);
 
         imageView.setImageResource(currentArtist.getArtistImage());

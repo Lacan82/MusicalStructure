@@ -1,50 +1,64 @@
 package com.example.raiff.latemusicialstructurepart2;
 
 
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
+import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ListView;
-import java.util.ArrayList;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 
+public class SongFragment extends AppCompatActivity {
 
-public class ArtistFragment extends Fragment {
-
-    public ArtistFragment() {
-        // Required empty public constructor
-    }
+    private SelectedItem selectedItem;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.fragment_song);
+        selectedItem = SelectedItem.getInstance();
+        TextView songTitle = (TextView) findViewById(R.id.songTitle) ;
 
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_artist, container, false);
-        ArrayList<Artist> artists = new ArrayList<>();
 
+        songTitle.setText(selectedItem.getSelected());
 
-        artists.add(new Artist("Deadmau5",R.drawable.deadmau));
+        ArrayList<Song> Song = new ArrayList<>();
 
-        ArtistAdapter adapter = new ArtistAdapter(getActivity(), artists);
+        String Selected = selectedItem.getSelected();
+        Log.v("ARGH", Selected);
+        if (Selected.equals("Deadmau5") || Selected.equals("4x4=12")) {
+            Song.add(new Song("4x4=12", "Deadmau5", "Some Cords"));
+            Song.add(new Song("4x4=12", "Deadmau5", "Sofi needs a Ladder"));
+            Song.add(new Song("4x4=12", "Deadmau5", "City in Florida"));
 
-        ListView listView = view.findViewById(R.id.artist_list);
+        }
+        if (Selected.equals("Deadmau5") || Selected.equals("W:/2016ALBUM/")) {
+            Song.add(new Song("W:/2016ALBUM/", "Deadmau5", "4ware"));
+            Song.add(new Song("W:/2016ALBUM/", "Deadmau5", "2448"));
+            Song.add(new Song("W:/2016ALBUM/", "Deadmau5", "Cat Thruster"));
+
+        }
+        if (Selected.equals("Daft Punk") || Selected.equals("Random Access Memories")) {
+            Song.add(new Song("Random Access Memories", "Daft Punk", "Give Life Back to Music"));
+            Song.add(new Song("Random Access Memories", "Daft Punk", "The Game of Love"));
+            Song.add(new Song("Random Access Memories", "Daft Punk", "Giorgio by Moroder"));
+
+        }
+
+        SongAdapter adapter = new SongAdapter(this, Song);
+
+        ListView listView = findViewById(R.id.song_list);
 
         listView.setAdapter(adapter);
 
-        return view;
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                if (position == 0) {
-                    Intent myIntent = new Intent(view.getContext(), ListItemActivity1.class);
-                    startActivityForResult(myIntent, 0);
-                }
+
+
     }
-
 }
+

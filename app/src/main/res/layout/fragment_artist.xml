@@ -5,15 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".ArtistFragment">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Artist loaded" />
 
     <ListView
         android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:id="@+id/artist_list" />
 
 </FrameLayout>

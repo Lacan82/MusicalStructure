@@ -8,12 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import java.util.ArrayList;
+import android.content.Intent;
 import android.widget.AdapterView;
-import android.widget.ListView;
+
 
 
 
 public class ArtistFragment extends Fragment {
+
+
+    private SelectedItem selectedItem;
 
     public ArtistFragment() {
         // Required empty public constructor
@@ -22,21 +26,34 @@ public class ArtistFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        selectedItem = SelectedItem.getInstance();
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.list_item, container, false);
-        ArrayList<Artist> artists = new ArrayList<>();
+        View view = inflater.inflate(R.layout.fragment_artist, container, false);
+        final ArrayList<Artist> artists = new ArrayList<>();
 
 
         artists.add(new Artist("Deadmau5",R.drawable.deadmau));
+        artists.add(new Artist("Daft Punk", R.drawable.daftpunk));
 
-        ArtistAdapter adapter = new ArtistAdapter(getActivity(), artists);
+        final ArtistAdapter adapter = new ArtistAdapter(getActivity(), artists);
 
-        ListView listView = view.findViewById(R.id.artist_list);
+        final ListView listView = view.findViewById(R.id.artist_list);
 
         listView.setAdapter(adapter);
 
-        return view;
-    }
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Artist selectedArtist = artists.get(position);
+                selectedItem.setSelectedItem(selectedArtist.getArtist());
+                Intent myIntent = new Intent(view.getContext(), SongFragment.class);
+                startActivityForResult(myIntent, 0);
 
-}
+
+
+                }
+            });
+        return view;
+        }
+    }

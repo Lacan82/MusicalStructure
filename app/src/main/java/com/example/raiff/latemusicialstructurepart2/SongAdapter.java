@@ -10,10 +10,13 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class AlbumsAdapter extends ArrayAdapter<Albums> {
-    public AlbumsAdapter(Context context, ArrayList<Albums> albums) {
-        super(context, 0, albums);
+public class SongAdapter extends ArrayAdapter<Song> {
+    public SongAdapter(Context context, ArrayList<Song> song) {
+        super(context, 0, song);
     }
+
+
+
     @Override
     public View getView(int  position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
@@ -21,19 +24,15 @@ public class AlbumsAdapter extends ArrayAdapter<Albums> {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.list_item, parent, false);
         }
+        Song currentSongs = getItem(position);
 
-        Albums currentAlbums = getItem(position);
-
-
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.default_imageView);
-
-        imageView.setImageResource(currentAlbums.getAlbumsImage());
 
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
 
-        defaultTextView.setText(currentAlbums.getAlbums());
+        defaultTextView.setText(currentSongs.getSong());
 
         return listItemView;
+
     }
 
 }

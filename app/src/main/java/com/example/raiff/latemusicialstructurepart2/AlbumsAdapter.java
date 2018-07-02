@@ -8,11 +8,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
-public class ArtistAdapter extends ArrayAdapter<Artist> {
-    public ArtistAdapter(Context context, ArrayList<Artist> artists) {
-        super(context, 0, artists);
+
+public class AlbumsAdapter extends ArrayAdapter<Albums> {
+    public AlbumsAdapter(Context context, ArrayList<Albums> albums) {
+        super(context, 0, albums);
     }
     @Override
     public View getView(int  position, View convertView, ViewGroup parent) {
@@ -22,16 +22,15 @@ public class ArtistAdapter extends ArrayAdapter<Artist> {
                     R.layout.list_item, parent, false);
         }
 
-        Artist currentArtist = getItem(position);
-
+        Albums currentAlbums = getItem(position);
 
         ImageView imageView = (ImageView) listItemView.findViewById(R.id.default_imageView);
 
-        imageView.setImageResource(currentArtist.getArtistImage());
+        imageView.setImageResource(currentAlbums.getAlbumsImage());
 
         TextView defaultTextView = (TextView) listItemView.findViewById(R.id.default_text_view);
 
-        defaultTextView.setText(currentArtist.getArtist());
+        defaultTextView.setText(currentAlbums.getAlbums());
 
         return listItemView;
     }

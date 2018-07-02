@@ -1,26 +1,38 @@
 package com.example.raiff.latemusicialstructurepart2;
 
-import java.io.Serializable;
 
-public class SelectedItem implements Serializable {
-    private String mselectedArtist;
-    private String mselectAlbum;
+public class SelectedItem {
+    private String mselectItem;
+    private int mImageResource;
 
-    public void setAlbum(String Album){
-        this.mselectAlbum = Album;
+    /*
+    Singleton
+     */
+    private static SelectedItem instance;
+    private SelectedItem() {
+
+    }
+    public static SelectedItem getInstance() {
+        if (instance == null) {
+            instance = new SelectedItem();
+        }
+        return instance;
+    }
+
+    public void setSelectedItem(String SelectedItem){
+        mselectItem = SelectedItem;
 
     }
 
-    public void setArtist(String Artist){
-       this.mselectedArtist = Artist;
-
+    public String getSelected() {
+        return mselectItem;
     }
 
-    public String getSelectedArtist() {
-        return this.mselectedArtist;
+    public void setResourceImage(int ResourceImage) {
+        this.mImageResource = ResourceImage;
     }
 
-    public String getSelectedAlbum() {
-        return this.mselectAlbum;
+    public int getResourceImage() {
+        return this.mImageResource;
     }
 }

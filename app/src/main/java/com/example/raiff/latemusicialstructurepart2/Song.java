@@ -1,21 +1,27 @@
 package com.example.raiff.latemusicialstructurepart2;
 
-public class Albums {
+public class Song {
 
     private String mAlbums;
-    private int mAlbumsImage;
+    private String mArtists;
+    private String mSong;
 
 
-    public Albums(String Albums, int Image) {
-        mAlbums = Albums;
-        mAlbumsImage = Image;
+    public Song(String Album,String Artist,String Song) {
+        mAlbums = Album;
+        mArtists = Artist;
+        mSong = Song;
     }
+
 
     public String getAlbums() {
         return mAlbums;
     }
 
-    public int getAlbumsImage() {
-        return mAlbumsImage;
+    public String getArtists() {
+        return mArtists;
     }
+
+    public String getSong() { return mSong;}
+
 }
